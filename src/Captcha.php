@@ -136,9 +136,12 @@ class Captcha
 
         $hash = password_hash($key, PASSWORD_BCRYPT, ['cost' => 10]);
 
-        $this->session->set('captcha', [
-            'key' => $hash,
-        ]);
+        // 非API调用模式，才需要设置 captcha session
+        if (!$this->api) {
+            $this->session->set('captcha', [
+                'key' => $hash,
+            ]);
+        }
 
         return [
             'value' => $bag,
