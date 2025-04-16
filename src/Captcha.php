@@ -64,7 +64,7 @@ class Captcha
     protected $alpha = 0;
     // 使用API模式生成
     protected $api = false;
-    // 使用API模式是否生成 session
+    // 是否生成 session
     protected $createSession = true;
     // 验证码干扰项及处理方法
     protected $interfere = [
