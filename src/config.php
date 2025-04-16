@@ -34,6 +34,8 @@ return [
     'alpha'    => 0,
     // 是否采用API模式生成
     'api'      => false,
+    // 是否创建Session
+    'createSession' => true,
 
     // 添加额外的验证码设置
     // verify => [
