@@ -64,6 +64,8 @@ class Captcha
     protected $alpha = 0;
     // 使用API模式生成
     protected $api = false;
+    // 使用API模式是否生成 session
+    protected $createSession = true;
     // 验证码干扰项及处理方法
     protected $interfere = [
         'useImgBg' => 'background',
@@ -135,9 +137,8 @@ class Captcha
         }
 
         $hash = password_hash($key, PASSWORD_BCRYPT, ['cost' => 10]);
-
-        // 非API调用模式，才需要设置 captcha session
-        if (!$this->api) {
+        
+        if ($this->createSession) {
             $this->session->set('captcha', [
                 'key' => $hash,
             ]);
